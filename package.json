@@ -1,0 +1,19 @@
+{
+  "dependencies": {
+    "express": "4.18.2"
+  },
+  "name": "crud",
+  "description": "En este ejercicio, se te pide crear una API simple para realizar operaciones CRUD (Crear, Leer, Actualizar, Eliminar) en una lista de usuarios. Cada usuario representa un personaje del famoso videojuego Street Fighter, con información como el nombre, la edad y el lugar de procedencia.",
+  "version": "1.0.0",
+  "main": "app.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node --watch app.js"
+
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
+
