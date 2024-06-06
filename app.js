@@ -1,4 +1,3 @@
-const { unsubscribe } = require('diagnostics_channel');
 const express = require('express');
 const app = express();
 
@@ -59,20 +58,24 @@ app.post('/usuarios', (req, res) => {
         lugarProcedencia: req.body.lugar,
     };
     usuarios.push(nuevoUsuario);
+    res.redirect('/usuarios')
 })
  
 
 app.put('/usuarios/:nombre', (req, res) => {
     const actualizaUsuI = usuarios.findIndex(usuario => usuario.nombre == req.params['nombre']);
-    
-    usuarios[actualizaUsuI] = {
-        id: req.body.id,
-        nombre: req.body.nombre,
-        edad: req.body.edad,
-        lugarProcedencia: req.body.lugarProcedencia,
+    if(actualizaUsuI == -1){
+        res.status(404).json({mensaje: "usuario no encontrado"})
+    }
+    else{
+        usuarios[actualizaUsuI].nombre =  req.body.nombre,
+        usuarios[actualizaUsuI].edad =  req.body.edad,
+        usuarios[actualizaUsuI].lugarProcedencia =  req.body.lugarProcedencia,
+        
+        res.json(usuarios[actualizaUsuI]);
+            
+    res.redirect('/usuarios')
     };
- 
-    res.json(usuarios[actualizaUsuI]);
 });
 
 app.delete('/usuarios/:id', (req, res) => {
